@@ -4,6 +4,7 @@
 ### To run this project on local
 
 ```bash
+  cd nginx
   docker compose up -d --build
 ```
 ```bash
