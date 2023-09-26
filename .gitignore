@@ -1,0 +1,11 @@
+.idea
+/nginx/logs
+
+/frontend/logs
+/frontend/angular/node_modules
+/frontend/angular/.angular
+/frontend/angular/.vscode
+
+/backend/logs/
+/backend/symfony/var/
+/backend/symfony/vendor/

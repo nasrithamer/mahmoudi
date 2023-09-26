@@ -1,0 +1,68 @@
+version: '3.9'
+
+networks:
+  mahmoudi-network:
+
+services:
+  mahmoudi_nginx:
+    container_name: mahmoudi_nginx_container
+    build:
+      context: .
+    image: nginx-image
+    ports:
+      - "4200:80"
+    volumes:
+      - ./logs:/var/log/nginx
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+
+      - ../backend/symfony:/var/www/html/symfony
+      - ../frontend/angular:/var/www/html/angular
+    depends_on:
+      - mahmoudi_frontend
+      - mahmoudi_backend
+    networks:
+      - mahmoudi-network
+
+  mahmoudi_frontend:
+    tty: true
+    container_name: mahmoudi_frontend_container
+    build:
+      context: ../frontend
+    image: node-image
+    command: "yarn --cwd /var/www/html/angular start"
+    volumes:
+      - ../frontend/angular:/var/www/html/angular
+      - ../frontend/logs:/var/log/app
+    networks:
+      - mahmoudi-network
+
+  mahmoudi_postgres:
+    container_name: mahmoudi_postgres_container
+    build:
+      context: ../db
+    image: postgres-image
+    ports:
+      - "5432:5432"
+    env_file:
+      - ../db/.env
+    volumes:
+      - ../db/data:/var/lib/postgresql/data
+      - ../db/scripts_sql_create_databases.sh:/docker-entrypoint-initdb.d/scripts_sql_create_databases.sh
+    networks:
+      - mahmoudi-network
+
+  mahmoudi_backend:
+    container_name: mahmoudi_symfony_container
+    build:
+      context: ../backend
+    image: php-fpm-8.2.6-image
+    volumes:
+      - ../backend/symfony:/var/www/html/symfony
+      - ../backend/php-fpm/www.conf:/usr/local/etc/php-fpm.d/www.conf
+      - ../backend/php-fpm/php.ini:/usr/local/etc/php/php.ini
+      - ../backend/logs:/var/log/php-fpm
+    environment:
+      SYMFONY_ENV: dev
+      APP_DEBUG: '1'
+    networks:
+      - mahmoudi-network
