@@ -17,7 +17,7 @@
 ```bash
   docker exec -it mahmoudi_frontend_container bash
   cd angular
-  npm install
+  yarn install
 ```
 
 ### configure backend app and create a user
