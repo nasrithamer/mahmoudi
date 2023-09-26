@@ -26,7 +26,7 @@
   cd symfony
   composer install
   symfony console doctrine:migrations:migrate
-  symfony console app:create-user
+  symfony console doctrine:fixtures:load
 ```
 
 ### Visit now [http//mahmoudi.local:4200](http//mahmoudi.local:4200)
