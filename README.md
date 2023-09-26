@@ -13,7 +13,12 @@
   127.0.0.1 backend.mahmoudi.local
 ```
 
-### Visit now [http//mahmoudi.local:4200](http//mahmoudi.local:4200)
+### configure frontend app
+```bash
+  docker exec -it mahmoudi_frontend_container bash
+  cd angular
+  npm install
+```
 
 ### configure backend app and create a user
 ```bash
@@ -22,3 +27,5 @@
   composer install
   symfony console app:create-user
 ```
+
+### Visit now [http//mahmoudi.local:4200](http//mahmoudi.local:4200)
