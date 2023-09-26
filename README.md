@@ -25,6 +25,7 @@
   docker exec -it mahmoudi_symfony_container bash
   cd symfony
   composer install
+  symfony console doctrine:migrations:migrate
   symfony console app:create-user
 ```
 
