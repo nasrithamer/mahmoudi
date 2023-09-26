@@ -25,7 +25,8 @@
   docker exec -it mahmoudi_symfony_container bash
   cd symfony
   composer install
-  symfony console app:create-user
+  symfony console doctrine:migrations:migrate
+  symfony console doctrine:fixtures:load
 ```
 
 ### Visit now [http//mahmoudi.local:4200](http//mahmoudi.local:4200)
