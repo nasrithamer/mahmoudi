@@ -23,7 +23,7 @@ export class AuthenticationComponent implements OnInit {
         this.username,
         this.password
       );
-      console.log(isLoggedIn);
+
       if (isLoggedIn) {
         this.router.navigate(['/']);
       } else {

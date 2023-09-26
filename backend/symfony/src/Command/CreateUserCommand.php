@@ -67,7 +67,7 @@ class CreateUserCommand extends Command
         $hashedPassword = $this->passwordHasher->hashPassword($user, $password);
         $user->setPassword($hashedPassword);
 
-        $user->setRoles(['ROLE_CUSTOMER']);
+        $user->setRoles([User::ROLE_CUSTOMER]);
 
         // Persist the user to the database
         $this->entityManager->persist($user);

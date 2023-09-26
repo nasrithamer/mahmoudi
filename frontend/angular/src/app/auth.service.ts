@@ -54,6 +54,22 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     const token = this.getToken();
-    return !!token;
+    if (!token) {
+      return false;
+    }
+
+    try {
+      const tokenPayload = JSON.parse(atob(token.split('.')[1]));
+
+      const expirationDate = new Date(tokenPayload.exp * 1000);
+      if (expirationDate <= new Date()) {
+        this.logout();
+        return false;
+      }
+
+      return true;
+    } catch (error) {
+      return false;
+    }
   }
 }

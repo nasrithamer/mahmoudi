@@ -29,6 +29,7 @@ security:
       security: false
   access_control:
     - { path: ^/login, roles: PUBLIC_ACCESS }
+    - { path: ^/api, roles: PUBLIC_ACCESS }
     - { path: ^/,       roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
