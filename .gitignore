@@ -9,3 +9,4 @@
 /backend/logs/
 /backend/symfony/var/
 /backend/symfony/vendor/
+/db/data/
