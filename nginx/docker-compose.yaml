@@ -29,7 +29,7 @@ services:
     build:
       context: ../frontend
     image: node-image
-    command: "yarn --cwd /var/www/html/angular start"
+#    command: "yarn --cwd /var/www/html/angular start"
     volumes:
       - ../frontend/angular:/var/www/html/angular
       - ../frontend/logs:/var/log/app
