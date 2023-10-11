@@ -25,7 +25,7 @@ export class AppSideLoginComponent {
         this.router.navigate(['/']);
       } else {
         this.password = '';
-        this.router.navigate(['/login']);
+        this.router.navigate(['/authentication/login']);
       }
     } catch (error) {
       console.error('An error occurred during login:', error);

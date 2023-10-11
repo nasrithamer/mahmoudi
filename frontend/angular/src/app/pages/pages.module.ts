@@ -1,17 +1,21 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { PagesRoutes } from './pages.routing.module';
-import { MaterialModule } from '../material.module';
-import { FormsModule } from '@angular/forms';
-import { NgApexchartsModule } from 'ng-apexcharts';
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {PagesRoutes} from './pages.routing.module';
+import {MaterialModule} from '../material.module';
+import {FormsModule} from '@angular/forms';
+import {NgApexchartsModule} from 'ng-apexcharts';
 // icons
-import { TablerIconsModule } from 'angular-tabler-icons';
+import {TablerIconsModule} from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
-import { AppDashboardComponent } from './dashboard/dashboard.component';
+import {AppDashboardComponent} from './dashboard/dashboard.component';
+import {AppProductComponent} from "./product/product.component";
 
 @NgModule({
-  declarations: [AppDashboardComponent],
+  declarations: [
+    AppDashboardComponent,
+    AppProductComponent,
+  ],
   imports: [
     CommonModule,
     MaterialModule,
@@ -22,4 +26,5 @@ import { AppDashboardComponent } from './dashboard/dashboard.component';
   ],
   exports: [TablerIconsModule],
 })
-export class PagesModule {}
+export class PagesModule {
+}
