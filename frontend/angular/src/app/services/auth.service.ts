@@ -22,9 +22,21 @@ export class AuthService {
         'Content-Type': 'application/json',
       });
       const credentials = {username, password};
+
+      // Vérifier si authenticationComponent existe et a une propriété login
+      if (
+        !routes[0] ||
+        !routes[0].authenticationComponent ||
+        !routes[0].authenticationComponent.login
+      ) {
+        console.log('Login Url is not defined');
+        return false;
+      }
+      const urlLogin = routes[0].authenticationComponent.login;
+
       const response: any = await this.http
-        // .post(routes[0].authenticationComponent.login, credentials)
-        .post("http://backend.mahmoudi.local:4200/login_check", credentials, {headers})
+        .post(urlLogin, credentials, {headers})
+        // .post("http://backend.mahmoudi.local:4200/login_check", credentials, {headers})
         .toPromise();
 
       if (response && response.token) {
